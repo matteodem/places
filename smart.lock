@@ -1,0 +1,69 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "iron-router": {},
+      "handlebar-helpers": {},
+      "bootstrap3-less": {},
+      "accounts-entry": {},
+      "iron-router-progress": {},
+      "semantic-ui": {},
+      "easy-check": {},
+      "easy-search": {},
+      "jquery-ui": {},
+      "server-session": {}
+    },
+    "packages": {
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "tag": "v0.6.1",
+        "commit": "4e1ee0581d68bff422a915dacb0bd30eae10fe08"
+      },
+      "handlebar-helpers": {
+        "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
+        "tag": "v0.0.9",
+        "commit": "71e94c99462b8801a34c5363510758b6ff5f5ac7"
+      },
+      "bootstrap3-less": {
+        "git": "https://github.com/eprochasson/bootstrap3-less",
+        "tag": "v0.1.4",
+        "commit": "23ec918f8377b15b22cba33e13b717214235c88a"
+      },
+      "accounts-entry": {
+        "git": "https://github.com/BeDifferential/accounts-entry.git",
+        "tag": "v0.4.4",
+        "commit": "56cee1ff5afe2ce5be7b749cd74fc939fc9ce781"
+      },
+      "iron-router-progress": {
+        "git": "https://github.com/Multiply/iron-router-progress.git",
+        "tag": "v0.2.0",
+        "commit": "ce730d1d26feadb7c75ea25f22c5bfdb0c549a8b"
+      },
+      "semantic-ui": {
+        "git": "https://github.com/nooitaf/meteor-semantic-ui.git",
+        "tag": "v0.9.3",
+        "commit": "419bb0296a2f61919d8525e49c72a9afce0bb06c"
+      },
+      "easy-check": {
+        "git": "https://github.com/matteodem/meteor-easy-check.git",
+        "tag": "v0.3.0",
+        "commit": "4032b66ebcc8a53612228dfa1177df70bffd796f"
+      },
+      "easy-search": {
+        "git": "https://github.com/matteodem/meteor-easy-search.git",
+        "tag": "v0.1.3",
+        "commit": "958c32377b49443df66c47261f250386a214b220"
+      },
+      "jquery-ui": {
+        "git": "https://github.com/TimHeckel/meteor-jquery-ui.git",
+        "tag": "v1.9.2",
+        "commit": "c437d45edcf1367df8d5ffa8bad2867758030bd2"
+      },
+      "server-session": {
+        "git": "https://github.com/matteodem/meteor-server-session.git",
+        "tag": "v0.4.1",
+        "commit": "c07427304f099f837991e5def23bce4a5cfa9054"
+      }
+    }
+  }
+}

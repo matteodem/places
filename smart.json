@@ -1,0 +1,14 @@
+{
+  "packages": {
+    "iron-router": {},
+    "handlebar-helpers": {},
+    "bootstrap3-less": {},
+    "accounts-entry": {},
+    "iron-router-progress": {},
+    "semantic-ui": {},
+    "easy-check": {},
+    "easy-search": {},
+    "jquery-ui": {},
+    "server-session": {}
+  }
+}

@@ -1,0 +1,54 @@
+<template name="detail">
+    <div class="detail wrapper">
+        <h2 class="ui header">{{name}}</h2>
+        <p class="grey description">{{description}}</p>
+    </div>
+
+    <div class="absolute diagram wrapper">
+        <a href="{{pathFor 'home'}}" class="go back">
+            Go back
+        </a>
+
+        <div id="didntFind">Didn't find your place! Search it with google maps before adding</div>
+        <div id="map_canvas" class="google-maps wrapper"></div>
+    </div>
+    {{#if isOwner}}
+    <button class="ui red remove button">Remove</button>
+    {{/if}}
+
+    <div class="ui basic modal transition hidden">
+        <div class="header">
+            Add this place to {{name}}?
+        </div>
+        <div class="content">
+            <div class="left">
+                <i class="home icon"></i>
+            </div>
+            <div class="right">
+                <form id="create-point-form" class="ui fluid form">
+                    <div class="field">
+                        <label>Name</label>
+                        <input id="pointName" name="pointName" placeholder="Name for the place" type="text">
+                    </div>
+                    <div class="field">
+                        <label>Description</label>
+                        <input id="pointDescription" name="pointDescription" placeholder="Description (e.g. really enjoyed this disco)" type="text">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="actions">
+            <div class="two fluid ui buttons">
+                <div class="ui negative labeled icon button">
+                    <i class="remove icon"></i>
+                    No
+                </div>
+                <div class="ui positive right labeled icon button">
+                    Yes
+                    <i class="checkmark icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+

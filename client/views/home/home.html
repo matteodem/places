@@ -1,0 +1,45 @@
+<template name="home">
+    {{> header}}
+    <div class="center aligned wrapper">
+        <div class="ui search-diagrams icon input">
+            <input type="text" id="placeSearch" placeholder="Search...">
+            <i class="blue search icon"></i>
+        </div>
+    </div>
+    {{#if currentUser}}
+    <div class="centralize create diagram wrapper">
+        <a class="unstyled link" id="create-diagram" href="#"><i class="large add sign icon"></i></a>
+
+        <form id="create-diagram-form" class="ui hidden fluid form">
+            <div class="field">
+                <label>Location</label>
+                <input id="name" name="name" placeholder="Location (e.g. Brazil)" type="text">
+            </div>
+            <div class="field">
+                <label>Description</label>
+                <input id="description" name="description" placeholder="Description (e.g. best restaurants in town)" type="text">
+            </div>
+            <div class="inline field">
+                <div class="ui toggle checkbox">
+                    <input id="isEditable" name="isEditable" type="checkbox" value="isEditable" />
+                    <label>Can everyone edit it?</label>
+                </div>
+            </div>
+            <button type="submit" class="ui green submit button">Create</button>
+        </form>
+    </div>
+    {{/if}}
+    <div class="diagram list wrapper">
+        <div class="ui relaxed divided list">
+            {{#each diagram}}
+            <a href="{{pathFor 'detail' this}}" class="unstyled link item">
+                <div class="small ui header">{{name}}</div>
+                <div class="grey description">{{description}}</div>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+    <footer>
+        {{> footer}}
+    </footer>
+</template>
