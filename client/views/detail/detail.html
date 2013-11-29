@@ -1,7 +1,9 @@
 <template name="detail">
     <div class="detail wrapper">
         <h2 class="ui header">{{name}}</h2>
-        <p class="grey description">{{description}}</p>
+        <p class="grey description">
+            {{description}} {{#if isPubliclyEditable}}<span class="grey paragraph">(publicly editable)</span>{{/if}}
+        </p>
     </div>
 
     <div class="absolute diagram wrapper">

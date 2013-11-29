@@ -7,7 +7,8 @@ Template.home.created = function () {
 }
 
 Template.home.rendered = function () {
-    var locInput = $("#name");
+    var geocoder,
+        locInput = $("#name");
 
     $('.ui.checkbox')
         .checkbox()
@@ -37,6 +38,34 @@ Template.home.rendered = function () {
     });
 
     locInput.autocomplete("option", "delay", 100);
+
+    // map with all points
+    map = new google.maps.Map(document.getElementById("global_map_canvas"), {
+        center: new google.maps.LatLng(40, 20),
+        zoom: 3,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    geocoder = new google.maps.Geocoder();
+
+    _.each(Place.find().fetch(), function (place) {
+        var loc,
+            marker;
+
+        geocoder.geocode({ 'address' : place.name }, function (results, status) {
+            loc = results.shift().geometry.location;
+
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(loc.ob, loc.pb),
+                map: map,
+                title: place.name
+            });
+
+            google.maps.event.addListener(marker, 'click', function () {
+                Router.go("detail", place);
+            });
+        });
+    });
 }
 
 Template.home.helpers({

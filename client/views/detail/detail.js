@@ -47,6 +47,17 @@ Template.detail.rendered = function () {
 
             // Event Listener for clicking onto the map
             google.maps.event.addListener(map, 'click', function (e) {
+                var user = Meteor.user();
+
+                if (!_.isObject(user)) {
+                    return false;
+                }
+
+                console.log();
+                if (that.data.owner !== user._id && !that.data.isPubliclyEditable) {
+                    return false;
+                }
+
                 $('.basic.modal').modal('setting', {
                     onApprove : function() {
                         var name = $('#pointName').val(),
@@ -57,7 +68,7 @@ Template.detail.rendered = function () {
                             'y' : e.latLng.pb,
                             'name' : name,
                             'description' : $('#pointDescription').val(),
-                            'owner' : Meteor.user()._id
+                            'owner' : user._id
                         };
 
                         if (0 >= obj.name.length || 0 >= obj.description.length) {
@@ -74,19 +85,33 @@ Template.detail.rendered = function () {
                             that.data._id,
                             { $push : { 'points' : id } }
                         );
+
+                        return true;
                     }
                 }).modal('show');
+
+                return true;
             });
 
             // All places that were selected
             _.each(that.data.points, function (pointId) {
-                var point = Point.findOne(pointId);
+                var marker,
+                    infowindow,
+                    point = Point.findOne(pointId);
 
                 if (_.isObject(point)) {
-                    new google.maps.Marker({
+                    infowindow = new google.maps.InfoWindow({
+                        content: Template.popup(point)
+                    });
+
+                    marker = new google.maps.Marker({
                         position: new google.maps.LatLng(point.x, point.y),
                         map: map,
                         title: point.name
+                    });
+
+                    google.maps.event.addListener(marker, 'click', function () {
+                        infowindow.open(map, marker);
                     });
                 }
             });
