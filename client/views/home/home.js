@@ -43,6 +43,10 @@ Template.home.rendered = function () {
     map = new google.maps.Map(document.getElementById("global_map_canvas"), {
         center: new google.maps.LatLng(40, 20),
         zoom: 3,
+        scrollwheel: false,
+        navigationControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
@@ -69,12 +73,14 @@ Template.home.rendered = function () {
 }
 
 Template.home.helpers({
-    'diagram' : function () {
-        if (!Session.get('search')) {
-            return Place.find();
+    'ownerName' : function () {
+        var user = Meteor.users.findOne(this.owner);
+
+        if (user) {
+            return user.username;
         }
 
-        return EasySearch.search('places', Session.get('search'));
+        return false;
     }
 });
 

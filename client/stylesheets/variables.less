@@ -1,3 +1,14 @@
 // Declare variables for use in all the template specific / main less files
 
 @greenColor: #30934c;
+
+// Mix Ins
+.transition (@values) {
+    @value: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
+
+    -webkit-transition: @value;
+    -moz-transition: @value;
+    -ms-transition: @value;
+    -o-transition: @value;
+    transition: @value;
+}

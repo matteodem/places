@@ -1,5 +1,12 @@
 var HomeController = RouteController.extend({
-    template: 'home'
+    template: 'home',
+    data : function () {
+        var place = !Session.get('search') ? Place.find() : EasySearch.search('places', Session.get('search'));
+
+        return {
+            'place' : place
+        }
+    }
 });
 
 Router.map(function () {

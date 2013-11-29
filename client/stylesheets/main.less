@@ -19,6 +19,16 @@
     display: none;
 }
 
+.floated {
+    &.right {
+        float: right;
+    }
+
+    &.left {
+        float: left;
+    }
+}
+
 /* -------------------
     Main styles
    ------------------- */
@@ -26,6 +36,7 @@
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: rgba(23, 255, 145, 0.01);
+    margin-bottom: 60px; // footer size
 }
 
 h1 {

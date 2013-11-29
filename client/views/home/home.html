@@ -32,10 +32,10 @@
     {{/if}}
     <div class="diagram list wrapper">
         <div class="ui relaxed divided list">
-            {{#each diagram}}
+            {{#each place}}
             <a href="{{pathFor 'detail' this}}" class="unstyled link item">
                 <div class="small ui header">{{name}}</div>
-                <div class="grey description">{{description}}</div>
+                <div class="grey description">{{description}}{{#if ownerName}} <span class="right floated">({{ownerName}}){{/if}}</span></div>
             </a>
             {{/each}}
         </div>
