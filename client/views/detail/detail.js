@@ -53,7 +53,6 @@ Template.detail.rendered = function () {
                     return false;
                 }
 
-                console.log();
                 if (that.data.owner !== user._id && !that.data.isPubliclyEditable) {
                     return false;
                 }
@@ -77,8 +76,6 @@ Template.detail.rendered = function () {
                         }
 
                         Point.easyInsert(obj);
-                        console.log(id);
-                        console.log(Point.findOne(id));
 
                         // Safe the points
                         Place.easyUpdate(
