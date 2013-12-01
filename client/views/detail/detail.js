@@ -44,6 +44,29 @@ Template.detail.rendered = function () {
                 zoom: 14,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
+            
+            // All points for a place
+            _.each(that.data.points, function (pointId) {
+                var marker,
+                    infowindow,
+                    point = Point.findOne(pointId);
+
+                if (_.isObject(point)) {
+                    infowindow = new google.maps.InfoWindow({
+                        content: Template.popup(point)
+                    });
+
+                    marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(point.x, point.y),
+                        map: map,
+                        title: point.name
+                    });
+
+                    google.maps.event.addListener(marker, 'click', function () {
+                        infowindow.open(map, marker);
+                    });
+                }
+            });
 
             // Event Listener for clicking onto the map
             google.maps.event.addListener(map, 'click', function (e) {
@@ -88,29 +111,6 @@ Template.detail.rendered = function () {
                 }).modal('show');
 
                 return true;
-            });
-
-            // All places that were selected
-            _.each(that.data.points, function (pointId) {
-                var marker,
-                    infowindow,
-                    point = Point.findOne(pointId);
-
-                if (_.isObject(point)) {
-                    infowindow = new google.maps.InfoWindow({
-                        content: Template.popup(point)
-                    });
-
-                    marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(point.x, point.y),
-                        map: map,
-                        title: point.name
-                    });
-
-                    google.maps.event.addListener(marker, 'click', function () {
-                        infowindow.open(map, marker);
-                    });
-                }
             });
         });
     }
